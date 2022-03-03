@@ -4,19 +4,16 @@ export class BodyCalculator {
     #weight : number
     #age : number
     #sex : string
-    #waist : number
 
     public constructor(height: number,
                        weight: number,
                        age: number,
                        sex: string,
-                       waist: number
     ) {
         this.#height = height
         this.#weight = weight
         this.#age = age
         this.#sex = sex
-        this.#waist = waist
     }
 
     public leanBodyMass() {
@@ -79,4 +76,6 @@ export class BodyCalculator {
     } 
     
 }
+
+export default BodyCalculator
 
