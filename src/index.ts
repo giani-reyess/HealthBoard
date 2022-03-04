@@ -1,7 +1,11 @@
 import App from './app'
+import 'dotenv/config'
+import PostController from './resources/posts/postController'
 
 const app = new App(
-    [], Number(process.env.PORT)
+    [
+        new PostController(),
+    ], Number(process.env.PORT)
 )
 
 app.listen()

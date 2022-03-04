@@ -3,8 +3,7 @@ import cors from "cors"
 import morgan from "morgan" 
 import helmet from "helmet" 
 import mongoose from "mongoose"
-import RouterController from "../routerInterface"
-import { json } from "stream/consumers"
+import RouterController from "./utils/interfaces/routerInterface"
 
 
 class App {
@@ -23,7 +22,7 @@ class App {
     }
     
     // INIT-MIDDLEWARE: run all middlewares
-    private InitialiseMiddlewares(){
+    private InitialiseMiddlewares(): void{
         this.express.use(cors())
         this.express.use(morgan('dev'))
         this.express.use(helmet())
@@ -40,17 +39,17 @@ class App {
     }
 
     // DataBaseConnection: handle database connection
-    private DataBaseConnection() {
+    private DataBaseConnection(): void {
         const {  MONGO_USER, MONGO_PASSWORD, MONGO_PATH } = process.env
         mongoose.connect(
-            `mongodb://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
+            `mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}${MONGO_PATH}`
         )
     }
     
 
-    public listen() {
+    public listen(): void {
         this.express.listen(this.port, () => {
-            console.log(`App listening on the http://localhost:${this.port}`)
+            console.log(`App listening on the port: ${this.port}`)
         })
     }    
 }
