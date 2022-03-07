@@ -4,20 +4,23 @@ import Post from "./post_interfaces/postInterface"
 
 
 class PostService {
-    private post = PostModel
+    private postModel = PostModel
 
     public async create(
+        // Set the needed parameters to create a post
         height: number, 
         weight: number,
         age: number, 
         sex: string
         ): Promise<Post> {
-        try {
-            const post = await this.post.create({height, weight, age, sex}) 
-            return post    
-        } 
         
-        catch (error) {
+        // Try to create the post  
+        try {
+            const post = await this.postModel.create({height, weight, age, sex}) 
+            return post    
+        
+        // If couldnt throw an error 
+        } catch (error) {
             throw new Error('Unable to create post')
         }
     }
