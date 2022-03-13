@@ -1,8 +1,8 @@
 import { Document } from 'mongoose'
 
 interface User extends Document {
-    email: string
     name: string
+    email: string
     password: string
     role: string
 

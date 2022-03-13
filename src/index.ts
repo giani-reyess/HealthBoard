@@ -1,6 +1,7 @@
 import App from './app'
 import 'dotenv/config'
 import PostController from './resources/posts/postController'
+import UserController from './resources/user/userController'
 
 /* 
     "app()" take as fist parameter an array with 
@@ -11,6 +12,7 @@ import PostController from './resources/posts/postController'
 const app = new App(
     [
         new PostController(),
+        new UserController(),
     ], Number(process.env.PORT)
 )
 
